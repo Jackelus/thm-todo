@@ -1,9 +1,10 @@
-import TaskList, { TaskListProps } from './ui/TaskList';
+import TaskList, { TaskListProps } from './project/[id]';
+import Link from 'next/link';
 
-const TaksListsData = [
+const ProjectsData = [
   {
     id: 1,
-    name: 'Task List 1',
+    name: 'Project 1',
     tags: ['tag1', 'tag2'],
     notes: 'Some notes',
     completion: '90%',
@@ -20,7 +21,7 @@ const TaksListsData = [
   },
   {
     id: 2,
-    name: 'Task List 2',
+    name: 'Project 2',
     tags: ['tag1', 'tag2'],
     notes: 'Some notes',
     completion: '90%',
@@ -37,47 +38,52 @@ const TaksListsData = [
   },
 ];
 
-const TaskListCard = ({ name, completion, tasks }: Partial<TaskListProps>) => {
+const ProjectCard = ({
+  id,
+  name,
+  completion,
+  tasks,
+}: Partial<TaskListProps>) => {
   return (
-    <div
-      style={{
-        width: '200px',
-        height: '200px',
-        borderRadius: '10px',
-        backgroundColor: '#f2f2f2',
-        padding: '10px',
-        margin: '10px',
-        color: '#000',
-      }}
-    >
-      <h3>{name}</h3>
-      <p>Completion: {completion}</p>
-      <h4>Tasks:</h4>
-      {tasks?.slice(0, 2).map((task) => (
-        <div key={task.id}>
-          <p>{task.title}</p>
-          <p>Status: {task.status}</p>
-        </div>
-      ))}
-    </div>
+    <Link href={`/project/${id}`}>
+      <div
+        style={{
+          width: '200px',
+          height: '200px',
+          borderRadius: '10px',
+          backgroundColor: '#f2f2f2',
+          padding: '10px',
+          margin: '10px',
+          color: '#000',
+        }}
+      >
+        <h3>{name}</h3>
+        <p>Completion: {completion}</p>
+        <h4>Tasks:</h4>
+        {tasks?.slice(0, 2).map((task) => (
+          <div key={task.id}>
+            <p>{task.title}</p>
+            <p>Status: {task.status}</p>
+          </div>
+        ))}
+      </div>
+    </Link>
   );
 };
 
 export default function Home() {
   return (
-    <>
-      <div>THM Task Manager</div>
-      <div className='flex'>
-        {TaksListsData.map((taskList) => (
-          <TaskListCard
-            key={`Tasklist-${taskList.name}-${taskList.id}`}
-            name={taskList.name}
-            completion={taskList.completion}
-            tasks={taskList.tasks}
-          />
-        ))}
-      </div>
-    </>
+    <div className='flex'>
+      {ProjectsData.map((project) => (
+        <ProjectCard
+          key={`Project-${project.name}-${project.id}`}
+          name={project.name}
+          completion={project.completion}
+          tasks={project.tasks}
+          id={project.id}
+        />
+      ))}
+    </div>
   );
 }
 
@@ -103,6 +109,7 @@ export default function Home() {
     - script to run all services
     - status types to enum
     - task search: name or tags
+    - Dashboard home page?
 
 */
 
