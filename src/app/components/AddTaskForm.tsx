@@ -1,6 +1,6 @@
 import { useFormStatus } from 'react-dom';
 import { createTask } from '@/app/actions';
-import { Project, Task } from '@/types/types';
+import { Project } from '@/types/types';
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -11,7 +11,7 @@ function SubmitButton() {
       className='rounded border-2 border-gray-400 p-1'
       aria-disabled={pending}
     >
-      Add Task
+      Save
     </button>
   );
 }
@@ -74,7 +74,7 @@ export function AddTaskForm({
               type='date'
               id='taskDate'
               name='taskDate'
-              defaultValue={dueDate?.toLocaleDateString()}
+              defaultValue={dueDate.toLocaleDateString()}
             />
           </div>
         </div>
