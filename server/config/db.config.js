@@ -5,7 +5,6 @@ export default function connectDB() {
 
 const url = process.env.MONGODB_URI || "mongodb://localhost:27017/thm-todo";
 
-console.log(url);
   try {
     mongoose.connect(url);
   } catch (err) {

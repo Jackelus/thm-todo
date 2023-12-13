@@ -4,31 +4,21 @@ dotenv.config({ path: '../.env' });
 import express from 'express';
 import connectDB from './config/db.config.js';
 import router from './routes/index.js';
-
+import cors from 'cors'; // Import the cors middleware
 const port = process.env.PORT;
 const app = express();
 
-// Connect to the database
+
 connectDB();
-
-
+app.use(cors());
+app.use(express.json()); // for parsing application/json
+// app.use(express.urlencoded({ extended: true })); 
 app.use('/api', router);
 app.use((_, res) => {
   res.send({
     message: 'Not found!'
   });
 });
-
-// Print available routes
-const availableRoutes = app._router.stack
-  .filter((layer) => layer.route)
-  .map((layer) => {
-    return {
-      path: layer.route.path,
-      methods: Object.keys(layer.route.methods)
-    };
-  });
-console.table(availableRoutes);
 
 try {
   app.listen(port, () => {

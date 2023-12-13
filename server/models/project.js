@@ -1,9 +1,8 @@
-import { Schema, model } from 'mongoose';
+import mongoose, { Schema, model } from 'mongoose';
 
 const projectSchema = new Schema({
     name: {
         type: String,
-        required: true
     },
     notes: {
         type: String,
@@ -16,14 +15,27 @@ const projectSchema = new Schema({
     },
     createdAt: {
         type: Date,
-        default: Date.now
+        default: Date.now()
     },
     tasks: [{
-        type: Array,
-        ref: 'Task',
-        default: []
+        _id: {
+
+            type: String,
+            default: () => new mongoose.Types.ObjectId().toString(),
+        },
+        taskName: {
+            type: String,
+        },
+        taskStatus: {
+            type: String,
+        },
+        dueDate: {
+            type: Date,
+        }
+
     }]
-});
+})
+
 
 const Project = model('Project', projectSchema);
 
