@@ -41,7 +41,7 @@ const Tasks = ({ project }: { project: Project }) => {
               <tr key={`task-${taskName}-${index}`} className='text-center'>
                 <td>{taskName}</td>
                 <td>{taskStatus}</td>
-                <td>{!!dueDate ? new Date(dueDate).toDateString() : ''}</td>
+                <td>{!!dueDate ? new Date(dueDate).toDateString() : '-'}</td>
                 <td>
                   <button
                     onClick={() =>
