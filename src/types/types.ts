@@ -2,7 +2,7 @@ export type Task = {
   _id: string;
   taskName: string;
   taskStatus?: string | undefined;
-  dueDate?: string | undefined;
+  dueDate?: Date | undefined;
 };
 
 export type Project = {

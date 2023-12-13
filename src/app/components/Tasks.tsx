@@ -18,10 +18,6 @@ const Tasks = ({ project }: { project: Project }) => {
   >(null);
   const { tasks, _id: projectId } = project;
 
-  const toggleTask = (id: number) => {
-    // Implement toggleTask functionality here
-  };
-
   return (
     <div className='w-full rounded'>
       <table className='w-full'>
@@ -30,7 +26,7 @@ const Tasks = ({ project }: { project: Project }) => {
             <th>Task</th>
             <th>Status</th>
             <th>Due Date</th>
-            <th>Due Date</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -45,7 +41,7 @@ const Tasks = ({ project }: { project: Project }) => {
               <tr key={`task-${taskName}-${index}`} className='text-center'>
                 <td>{taskName}</td>
                 <td>{taskStatus}</td>
-                <td>{dueDate}</td>
+                <td>{!!dueDate ? new Date(dueDate).toDateString() : ''}</td>
                 <td>
                   <button
                     onClick={() =>

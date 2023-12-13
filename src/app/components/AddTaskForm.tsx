@@ -26,7 +26,7 @@ export function AddTaskForm({
         taskId: string;
         taskName: string;
         taskStatus: string;
-        dueDate: string;
+        dueDate: Date;
       }
     | {};
 }) {
@@ -34,7 +34,7 @@ export function AddTaskForm({
     taskId: string;
     taskName: string;
     taskStatus: string;
-    dueDate: string;
+    dueDate: Date;
   };
   const { _id: id, name } = project;
 
@@ -64,9 +64,9 @@ export function AddTaskForm({
           </div>
           <div>
             <select id='taskStatus' name='taskStatus' defaultValue={taskStatus}>
-              <option value='todo'>To Do</option>
-              <option value='inProgress'>In Progress</option>
-              <option value='completed'>Completed</option>
+              <option value='Todo'>To Do</option>
+              <option value='In Progress'>In Progress</option>
+              <option value='Completed'>Completed</option>
             </select>
           </div>
           <div>
@@ -74,7 +74,7 @@ export function AddTaskForm({
               type='date'
               id='taskDate'
               name='taskDate'
-              defaultValue={dueDate}
+              defaultValue={dueDate?.toLocaleDateString()}
             />
           </div>
         </div>
