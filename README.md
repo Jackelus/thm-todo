@@ -9,9 +9,10 @@ This is a Todo app built with Next.js. It allows you to create, update, and dele
 To run the app locally, follow these steps:
 
 1. Clone the repository
-2. Run `npm install` to install dependencies
-3. Run `npm run server` to start server
-4. Run `npm run build` to build the app
-5. Run `npm run start` to start the development server
+2. Create .env for environment variables, see .env.example for example
+3. Run `npm install` to install dependencies
+4. Run `npm run server` to start server
+5. Run `npm run build` to build the app
+6. Run `npm run start` to start the development server
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
