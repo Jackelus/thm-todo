@@ -1,6 +1,4 @@
 import Tasks from '../../components/Tasks';
-import { AddTaskForm } from '../../components/AddTaskForm';
-import { revalidatePath, revalidateTag } from 'next/cache';
 
 type TaskType = {
   id: number;
@@ -39,11 +37,6 @@ export default async function ProjectPage({
   const name = params.name;
   const project = await getProject(name);
 
-  // const handleEditClick = () => {
-  //   setIsEditing(true);
-  //   // Add your edit logic here
-  // };
-
   return (
     <div className='flex w-full gap-2 p-4'>
       <div
@@ -68,7 +61,7 @@ export default async function ProjectPage({
           color: '#000',
         }}
       >
-        <Tasks project={project} handleDeleteTask={handleDeleteTask} />
+        <Tasks project={project} />
       </div>
     </div>
   );
